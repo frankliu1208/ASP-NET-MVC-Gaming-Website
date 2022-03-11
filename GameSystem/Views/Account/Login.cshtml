@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Log-in of the Game ENDLESS JOURNEY</title>
+    <link href="/css/global.css" rel="stylesheet" />
+</head>
+<body>
+    <!--Page header-->
+    <div id="hlogo">
+        <img src="/img/logo.png" />
+        <p>User Log-in</p>
+    </div>
+    <div id="login">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input id="account" name="account" title="Account" maxlength="320" type="text" class="input-block" placeholder="Account" />    
+            <input id="pwd" name="pwd" title="Password" maxlength="16" type="password" class="input-block" placeholder="Password" />
+            <input type="submit" id="submit" value="Log-in" />
+        }
+        <div style="color: red">@TempData["msg"]</div>
+    </div>
+    <div id="footer">
+        <p>
+            Wujinkeji.net EULA | Privacy | Laws | Copyright |
+        </p>
+        <p>©2022 Wujinkeji GmbH all rights reserved</p>
+    </div>
+</body>
+</html>

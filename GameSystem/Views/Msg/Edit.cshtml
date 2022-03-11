@@ -1,0 +1,82 @@
+﻿@model GameSystem.Models.Msg
+
+@{
+    ViewBag.Title = "Edit information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="clink">
+        <img src="/img/icon_home2.png" />
+        <a href="/Home/Index">Homepage</a>  >> Editing information</a>
+    </div>
+    
+    <div style="color: red">@TempData["msg"]</div>
+    @using (Html.BeginForm("Edit", "Msg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })    @*这些属性不需要在前端页面上显示，但是需要从前端传递到控制器的edit方法中*@
+            @Html.HiddenFor(model => model.MsgID)
+            @Html.HiddenFor(model => model.MsgPhoto)
+            @Html.HiddenFor(model => model.AccountID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MsgTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgText, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.MsgText, 4, 100, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.MsgType, new SelectList(new[] { "News", "Videos and Pictures", "Hero's record" }), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <img src="@Model.MsgPhoto" width="150px" height="100px" />
+                    <input type="file" name="photo" id="photo" />
+                    @Html.ValidationMessageFor(model => model.MsgPhoto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MsgTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgHit, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MsgHit, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgHit, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=" Save " class="btn btn-default" style="background-color:#C9C" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        <hr /> @Html.ActionLink("Return to list", "Index")
+    </div>
+</div>

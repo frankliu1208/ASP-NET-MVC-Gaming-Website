@@ -1,0 +1,61 @@
+﻿@model GameSystem.Models.Msg
+
+@{
+    ViewBag.Title = "Create information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="clink">
+        <img src="/img/icon_home2.png" />
+        <a href="/Home/Index">Home page</a>  >> Create information</a>
+    </div>
+
+    <!--Create information-->
+    <div style="color: red">@TempData["msg"]</div>
+    @using (Html.BeginForm("Create", "Msg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })<hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MsgTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgText, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.MsgText, 4,100,new { htmlAttributes = new { @class = "form-control"  } })
+                    @Html.ValidationMessageFor(model => model.MsgText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.MsgType, new SelectList(new[] { "News", "Videos and Pictures", "Hero's records" }), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MsgType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MsgPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="photo" id="photo" />
+                    @Html.ValidationMessageFor(model => model.MsgPhoto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=" Create " class="btn btn-default"  style="background-color:#C9C" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        <hr /> @Html.ActionLink("Return to list", "Index")
+    </div>
+</div>

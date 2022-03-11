@@ -1,0 +1,27 @@
+﻿@using GameSystem.Models
+@{
+    ViewBag.Title = "Videos and pictures";
+}
+
+
+<div id="content">
+    <div id="clink">
+        <img src="/img/icon_home2.png" />
+        <a href="/Home/Index">Home page</a>  >>
+        <a href="/Home/Videos">Videos and pictures</a>
+    </div>
+    
+    <div id="videos">
+        @foreach (Msg item in ViewBag.list)
+        {
+            <dl>
+                <dt>
+                    <a href="/Msg/Details/@item.MsgID"><img src="@item.MsgPhoto" /></a>
+                </dt>
+                <dd><a href="/Msg/Details/@item.MsgID">@item.MsgTitle</a></dd>
+            </dl>
+        }
+        <div style="clear:both;"></div>
+    </div>
+</div>
+

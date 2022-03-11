@@ -1,0 +1,30 @@
+﻿ @using GameSystem.Models
+@{
+    ViewBag.Title = "Home page";
+}
+<!--信息列表-->
+<div id="content">
+    <div id="clink">
+        <img src="/img/icon_home2.png" />
+        <a href="/Home/Index">Home page</a>  >>
+    </div>
+    <!--图文混排，信息列表-->
+    <div id="list">
+        @foreach (Msg item in ViewBag.list)
+        {
+            <dl>
+                <dt>
+                    <img src="@item.MsgPhoto" />
+                </dt>
+                <dd id="title"><a href="/Msg/Details/@item.MsgID" target="_blank">@item.MsgTitle</a></dd>
+                <dd id="txt"><a href="/Msg/Details/@item.MsgID" target="_blank">@item.MsgText.......</a></dd>
+                <dd id="type">
+                    <img src="/img/icon_author.png" /><span>@item.Account.AccountName </span>
+                    <img src="/img/icon_clock.png" /><span>@item.MsgTime</span>
+                    <img src="/img/icon_hit.png" /><span> @item.MsgHit 次</span>
+                </dd>
+            </dl>
+        }
+        <div style="clear:both;"></div>
+    </div>
+</div>

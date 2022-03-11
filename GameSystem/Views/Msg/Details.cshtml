@@ -1,0 +1,30 @@
+﻿@model GameSystem.Models.Msg
+
+@{
+    ViewBag.Title = "Information details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div id="clink">
+        <img src="/img/icon_home2.png" />
+        <a href="/Home/Index">Home page</a>  >> Information details</a>
+    </div>
+    <div id="detail">
+        <div id="dTitle" style="text-align:center;font-size:20px;padding:10px;">@Html.DisplayFor(model => model.MsgTitle)</div>
+        <div id="dProp" style="text-align:center;padding:10px;">
+            <img src="/img/icon_author.png" />
+            <span>@Html.DisplayFor(model => model.Account.AccountName)</span>
+            <img src="/img/icon_clock.png" />
+            <span>@Html.DisplayFor(model => model.MsgTime)</span>
+            <img src="/img/icon_hit.png" />
+            <span> @Html.DisplayFor(model => model.MsgHit) 次</span>
+        </div>
+        <div id="dImg" style="text-align:center;padding:10px;">
+            <img src="@Html.DisplayFor(model => model.MsgPhoto)" />
+        </div>
+        <div id="dText">@Html.DisplayFor(model => model.MsgText)</div>
+    </div>
+
+</div>
+

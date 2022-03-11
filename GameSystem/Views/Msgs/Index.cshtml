@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GameSystem.Models.Msg>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgHit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.AccountName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgPhoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgHit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.AccountName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MsgID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MsgID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MsgID })
+        </td>
+    </tr>
+}
+
+</table>

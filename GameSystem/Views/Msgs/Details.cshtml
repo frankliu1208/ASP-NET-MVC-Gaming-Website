@@ -1,0 +1,75 @@
+﻿@model GameSystem.Models.Msg
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Msg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgHit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgHit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.AccountName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

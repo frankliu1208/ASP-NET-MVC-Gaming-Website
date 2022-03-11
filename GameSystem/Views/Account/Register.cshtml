@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Register of the Game ENDLESS JOURNEY</title>
+    <link href="/css/global.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+
+</head>
+<body>
+    <!--page header-->
+    <div id="hlogo">
+        <img src="/img/logo.png" />
+        <p>Create account</p>
+    </div>
+    <div id="login">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class=" block1">Create your game account and start your exciting journey!</div>
+            @Html.TextBox("AccountName", "", new { @class = "input-block-small", maxlength = "320", placeholder = "Account" })
+            @Html.TextBox("AccountPwd", "", new { @class = "input-block-small", maxlength = "32", placeholder = "Password" })
+            @Html.TextBox("AccountPwd2", "", new { @class = "input-block-small", maxlength = "32", placeholder = "Confirm password" })
+            @Html.TextBox("AccountEmail", "", new { @class = "input-block-small", maxlength = "32", placeholder = "Mailbox" })
+            <div class="block1">
+                性别：
+                @Html.RadioButton("AccountSex", "1", true, new { @class = "input-radio" }) Man
+                @Html.RadioButton("AccountSex", "0", false, new { @class = "input-radio" }) Woman
+            </div>
+            <div class="block1">
+                @Html.CheckBox("I agree", true, new { @class = "input-checkbox" })
+                I have read and accepted the privacy policy
+            </div>
+            <input type="submit" id="submit" value="Register for free" data-loading-text="" tabindex="1" />
+            <div style="color: red">
+                @Html.ValidationSummary()
+            </div>
+        }
+        <div style="color: red">@TempData["msg"]</div>
+    </div>
+    <div id="footer">
+        <p>
+            Wujinkeji.net EULA | Privacy | Laws | Copyright |
+        </p>
+        <p>©2022 Wujinkeji GmbH all rights reserved</p>
+    </div>
+</body>
+</html>
