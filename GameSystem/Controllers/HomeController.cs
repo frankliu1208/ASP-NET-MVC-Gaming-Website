@@ -10,14 +10,15 @@ namespace GameSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private GameDBEntities db = new GameDBEntities();
+        private GameDBEntities db = new GameDBEntities(); // Database context
+
         public ActionResult Index()
         {
-            
+            // serach and get all the user info. 
             ViewBag.list = db.Msg.Include("Account")       
                 .OrderByDescending(o => o.MsgTime).ToList();  // ToList will imediately do the checking,  through ViewBag, transfer to the front-end  
 
-            return View();
+            return View();   // ViewBag.list send the info from LINQ search to the View page
         }
 
         public ActionResult News()

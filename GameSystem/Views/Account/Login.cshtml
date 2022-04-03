@@ -1,14 +1,15 @@
 ﻿@{
-    Layout = null;
+    Layout = null;   // don't need the layout
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Log-in of the Game ENDLESS JOURNEY</title>
-    <link href="/css/global.css" rel="stylesheet" />
+    <link href="/css/global.css" rel="stylesheet" />   <!--need to include css files, because we did not use layout page-->
 </head>
 <body>
+
     <!--Page header-->
     <div id="hlogo">
         <img src="/img/logo.png" />
@@ -17,12 +18,14 @@
     <div id="login">
         @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <input id="account" name="account" title="Account" maxlength="320" type="text" class="input-block" placeholder="Account" />    
+            <input id="account" name="account" title="Account" maxlength="320" type="text" class="input-block" placeholder="Account" /> <!--placeholder is a reminder, the title can not deleted-->
             <input id="pwd" name="pwd" title="Password" maxlength="16" type="password" class="input-block" placeholder="Password" />
             <input type="submit" id="submit" value="Log-in" />
         }
-        <div style="color: red">@TempData["msg"]</div>
+        <div style="color: red">@TempData["msg"]</div>  <!--error message display-->
     </div>
+
+
     <div id="footer">
         <p>
             Wujinkeji.net EULA | Privacy | Laws | Copyright |

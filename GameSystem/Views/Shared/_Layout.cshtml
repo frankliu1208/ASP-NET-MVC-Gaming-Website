@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>无尽征途 - @ViewBag.Title </title>
+    <title>无尽征途Endless Journey - @ViewBag.Title </title>
 
 
     @Styles.Render("~/Content/css")        <!--becuase it has been bundled in BundleConfig.cs-->
@@ -16,10 +16,11 @@
 </head>
 <body>
     <div id="all">
+
         <!--Page header-->
         <div id="head">
             <div id="user">
-                @if (Session["login"] == null)
+                @if (Session["login"] == null)     /* check user login status, through session.  when it is null, display the login */
                 {
                     <span>
                         <a href="/Account/Login" target="_blank">Log-in</a> |
@@ -31,7 +32,9 @@
                     string uname = ((Account)Session["login"]).AccountName;   /* by default, get the Object type from Session[] */
                     <span>
                         @uname Welcome!
-                        | <a href="/Msg/Index" target="_blank">Information management</a>
+                        <a href="/Msg/Index" target="_blank">Information management</a>
+                        @Html.ActionLink("log-out", "Quite", "Account")
+
                     </span>
                 }
 
@@ -40,6 +43,7 @@
 
             <div style="clear:both;"></div>
         </div>
+
 
         <div id="middle">
             <div id="bannel">
@@ -73,6 +77,8 @@
             <!--Information list-->
             @RenderBody()
         </div>
+
+
             <!--Page footer-->
             <div id="footer">
                 <div>
@@ -80,7 +86,7 @@
                         <img src="/img/logo2.png" />
                     </div>
                     <div id="cfooter">
-                        ©2022 无尽科技有限公司版权所有 | 新广出审[2018]377号
+                        ©2022 All right reserved WuJi Technology Company | 新广出审[2018]377号
                         <hr style="height:1px;border:none;border-top:1px solid #808080;" />
                         <p> Resist bad games and refuse pirated games. Pay attention to self-protection and beware of being cheated.</p>
                         <p> Moderate games benefit the brain, addicted to games hurt the body. Reasonable arrangement of time and enjoy a healthy life.。</p>

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<GameSystem.Models.Msg>
-@using GameSystem.Models
+@using GameSystem.Models    
 
 
 @{
@@ -14,9 +14,9 @@
         <a href="/Msg/Index">Information management</a> >>
         <a href="/Msg/Create">Create information</a>
     </div>
-    
 
-    <table  border="1" cellspacing="0"  >
+
+    <table border="1" cellspacing="0">
         <tr align="center">
             <td>Title</td>
             <td>Picture</td>
@@ -25,10 +25,10 @@
         </tr>
         @foreach (var item in Model)
         {
-            <tr  align="center">
+            <tr align="center">
                 <td width="300px">@item.MsgTitle</td>
-                <td  width="150px"><img src="@item.MsgPhoto" style="width:100px;height:50px;" /></td>
-                <td  width="150px">@item.MsgType</td>
+                <td width="150px"><img src="@item.MsgPhoto" style="width:100px;height:50px;" /></td>
+                <td width="150px">@item.MsgType</td>
                 <td width="150px">
                     <a href="/Msg/Details/@item.MsgID" target="_blank">Details</a> |
                     <a href="/Msg/Edit/@item.MsgID">Modify</a> |

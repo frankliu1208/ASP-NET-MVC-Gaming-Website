@@ -1,4 +1,6 @@
-﻿@{
+﻿@model GameSystem.Models.Account
+
+@{
     Layout = null;
 }
 
@@ -8,7 +10,7 @@
     <meta charset="utf-8" />
     <title>Register of the Game ENDLESS JOURNEY</title>
     <link href="/css/global.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>   <!--use jQuery to do verification-->
     <script src="~/Scripts/jquery.validate.js"></script>
 
 
@@ -20,7 +22,7 @@
         <p>Create account</p>
     </div>
     <div id="login">
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id="RegisterForm" }))
         {
             <div class=" block1">Create your game account and start your exciting journey!</div>
             @Html.TextBox("AccountName", "", new { @class = "input-block-small", maxlength = "320", placeholder = "Account" })
@@ -28,7 +30,7 @@
             @Html.TextBox("AccountPwd2", "", new { @class = "input-block-small", maxlength = "32", placeholder = "Confirm password" })
             @Html.TextBox("AccountEmail", "", new { @class = "input-block-small", maxlength = "32", placeholder = "Mailbox" })
             <div class="block1">
-                性别：
+                Sex：
                 @Html.RadioButton("AccountSex", "1", true, new { @class = "input-radio" }) Man
                 @Html.RadioButton("AccountSex", "0", false, new { @class = "input-radio" }) Woman
             </div>
@@ -37,11 +39,12 @@
                 I have read and accepted the privacy policy
             </div>
             <input type="submit" id="submit" value="Register for free" data-loading-text="" tabindex="1" />
-            <div style="color: red">
+            
+            /* <div style="color: red">
                 @Html.ValidationSummary()
-            </div>
+            </div> */
         }
-        <div style="color: red">@TempData["msg"]</div>
+        <div style="color: red">@TempData["msg"]</div> <!--display error message  -->   
     </div>
     <div id="footer">
         <p>
@@ -49,5 +52,39 @@
         </p>
         <p>©2022 Wujinkeji GmbH all rights reserved</p>
     </div>
+
+    <script>
+        $(function () {
+            $("#RegisterForm").validate({
+
+                rules: {
+                    AccountName: {
+                        required: true,
+                        minlength: 4
+                    },
+                    AccountPwd: {
+                        required: true,
+                        minlength: 8
+                    }
+
+                },
+                message: {
+                    AccountName: {
+                        required: "can not be empty",
+                        minlength: "at least 4 character"
+
+                    },
+                    AccountPwd: {
+                        required: "can not be empty",
+                        minlength: "at least 8 character"
+                    }
+
+
+            })
+        })
+
+    </script>
+
+
 </body>
 </html>
